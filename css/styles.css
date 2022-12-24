@@ -439,6 +439,48 @@ box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 .link-social.footer:hover {
     background-color: var(--social-media-hover-color);
 }
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(46, 47, 66, 0.4);
+    opacity: 1;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1); 
+}
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+    transform: scale(0.9) translate(-50%, -50%);
+}
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: scale(1.0) translate(-50%, -50%);
+    width: 408px;
+    height: 576px;
+    border-radius: 4px;
+    background-color: #FCFCFC;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-button {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    border: 1px;
+    border-color: var(--primary-color);
+    background-color: var(--footer-text-color);
+}
+.modal-button:active {
+    background-color: var(--hero-button-active-color);
+}
 
 /* portfolio */
 .portfolio-section {
@@ -513,6 +555,24 @@ box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     transition-property: box-shadow;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    
+}
+.div-img {
+    position: relative;
+    overflow: hidden;
+}
+.overlay {
+    position: absolute;
+    width: 360px;
+    height: 300px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 40px;
+    background-color: var(--accent-color);
+    transform: translateY(0);
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);   
 }
 .link-portfolio-link:hover,
 .link-portfolio-link:focus {
@@ -520,8 +580,11 @@ box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
                 0 1px 1px 0 rgba(46, 47, 66, 0.16),
                 0 1px 6px 0 rgba(46, 47, 66, 0.08);
 }
-.link-portfolio-link:after {
-
+.link-portfolio-link:hover .overlay {
+    transform: translateY(-100%);
+}
+.overlay-text {
+    color: var(--footer-studio-color);
 }
 .item-about {
     padding-top: 32px;
@@ -530,4 +593,5 @@ box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     border-left: 0.5px solid var(--footer-studio-color);;
     border-bottom: 0.5px solid var(--footer-studio-color);
     border-right: 0.5px solid var(--footer-studio-color);
+    
 }
